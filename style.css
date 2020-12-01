@@ -11,7 +11,7 @@ html {
   scroll-behavior: smooth;
 }
 
-
+/* all similar content styling codes */
 section {
   padding: 100px 0;
 }
@@ -67,8 +67,8 @@ section .title::after {
   transform: translateX(-50%);
 }
 
-/* custnavbar styling */
-.custnavbar {
+/* navbar styling */
+.navbar {
   position: fixed;
   width: 100%;
   z-index: 999;
@@ -76,26 +76,32 @@ section .title::after {
   font-family: "Ubuntu", sans-serif;
   transition: all 0.3s ease;
 }
-.custnavbar.sticky {
+.navbar.sticky {
   padding: 15px 0;
   background: crimson;
 }
-.custnavbar .max-width {
+.navbar .max-width {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.custnavbar .logo a {
+.navbar .logo a {
   color: #fff;
   font-size: 35px;
   font-weight: 600;
 }
-
-.custnavbar .menu li {
+.navbar .logo a span {
+  color: crimson;
+  transition: all 0.3s ease;
+}
+.navbar.sticky .logo a span {
+  color: #111;
+}
+.navbar .menu li {
   list-style: none;
   display: inline-block;
 }
-.custnavbar .menu li a {
+.navbar .menu li a {
   display: block;
   color: #fff;
   font-size: 18px;
@@ -103,10 +109,10 @@ section .title::after {
   margin-left: 25px;
   transition: color 0.3s ease;
 }
-.custnavbar .menu li a:hover {
+.navbar .menu li a:hover {
   color: crimson;
 }
-.custnavbar.sticky .menu li a:hover {
+.navbar.sticky .menu li a:hover {
   color: #111;
 }
 
@@ -126,7 +132,7 @@ section .title::after {
   bottom: 10px;
   text-align: center;
   line-height: 45px;
-  color: #fff !important;
+  color: #fff;
   z-index: 9999;
   font-size: 30px;
   border-radius: 6px;
@@ -237,6 +243,58 @@ section .title::after {
 }
 
 /* education section styling */
+/* Popup container */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* The actual popup (appears on top) */
+.popup .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
 .education,
 .projects {
   color: #fff;
@@ -360,7 +418,7 @@ section .title::after {
 
 /* projects section styling */
 .projects .title::after {
-  content: "what all I created";
+  content: "what did i create";
 }
 .projects .carousel .card {
   background: #222;
@@ -560,7 +618,7 @@ footer span a:hover {
   .menu-btn i.active:before {
     content: "\f00d";
   }
-  .custnavbar .menu {
+  .navbar .menu {
     position: fixed;
     height: 100vh;
     width: 100%;
@@ -571,13 +629,13 @@ footer span a:hover {
     padding-top: 80px;
     transition: all 0.3s ease;
   }
-  .custnavbar .menu.active {
+  .navbar .menu.active {
     left: 0;
   }
-  .custnavbar .menu li {
+  .navbar .menu li {
     display: block;
   }
-  .custnavbar .menu li a {
+  .navbar .menu li a {
     display: inline-block;
     margin: 20px 0;
     font-size: 25px;
